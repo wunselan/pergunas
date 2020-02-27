@@ -676,6 +676,8 @@ a:focus,
 	width: 100%;
 	margin-top: 35px;
 	margin-bottom: 35px;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 
 .mu-single-service-icon {
@@ -699,7 +701,7 @@ a:focus,
 .mu-single-service-content {
 	display: inline;
 	float: left;
-	width: 80%;
+	width: 100%;
 }
 
 .mu-single-service-content h3 {
@@ -2862,8 +2864,7 @@ a:focus,
 	}
 
 	.mu-single-service-content {
-		width: 78%;
-		margin-left: 15px;
+		width: 100%;
 	}
 
 	.mu-video-close-btn {
@@ -2992,8 +2993,7 @@ a:focus,
 	}
 
 	.mu-single-service-content {
-		width: 70%;
-		margin-left: 10px;
+		width: 100%;
 	}
 
 	.mu-video-iframe-area {
@@ -3177,7 +3177,7 @@ a:focus,
 	}
 
 	.mu-single-service-content {
-		margin-left: 20px;
+		/* margin-left: 20px; */
 	}
 
 	.mu-counter-area {

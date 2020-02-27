@@ -48,4 +48,5 @@ class Welcome extends CI_Controller {
 		$this->load->view('organisasi');
 		$this->load->view('footer');
 	}
+	
 }
