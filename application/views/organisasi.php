@@ -26,8 +26,8 @@
                                             <div class="mu-single-service">
                                                 <div class="mu-single-service-content">
                                                     <h3>Kepala Sekolah</h3>
-														<img style="max-width:25%" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
-                                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor commodo .</p>
+														<img style="max-width:25%; margin-bottom: 10px;" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
+                                                    <h4>Wunsel Arto Negoro</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -37,8 +37,8 @@
                                             <div class="mu-single-service">
                                                 <div class="mu-single-service-content">
                                                     <h3>Wakil Kepala Sekolah</h3>
-                                                    <img style="max-width:25%" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
-                                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor commodo .</p>
+                                                    <img style="max-width:25%; margin-bottom: 10px;" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
+                                                    <h4>Wunsel Arto Negoro</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -50,8 +50,8 @@
                                             <div class="mu-single-service">
                                                 <div class="mu-single-service-content">
                                                     <h3>Guru</h3>
-                                                    <img style="max-width:25%" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
-                                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor commodo .</p>
+                                                    <img style="max-width:25%; margin-bottom: 10px;" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
+                                                    <h4>Wunsel Arto Negoro</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -61,8 +61,8 @@
                                             <div class="mu-single-service">
                                                 <div class="mu-single-service-content">
                                                     <h3>Guru</h3>
-                                                    <img style="max-width:25%" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
-                                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor commodo .</p>
+                                                    <img style="max-width:25%; margin-bottom: 10px;" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
+                                                    <h4>Wunsel Arto Negoro</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -72,8 +72,8 @@
                                             <div class="mu-single-service">
                                                 <div class="mu-single-service-content">
                                                     <h3>Guru</h3>
-                                                    <img style="max-width:25%" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
-                                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor commodo .</p>
+                                                    <img style="max-width:25%; margin-bottom: 10px;" src="/pergunas/application/assets/images/pergunas5.jpg" alt="img">
+                                                    <h4>Wunsel Arto Negoro</h4>
                                                 </div>
                                             </div>
                                         </div>
