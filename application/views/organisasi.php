@@ -144,3 +144,11 @@
     </section>
     <!-- End Services -->	
 </body>
+<script>
+    $(document).ready(function() {
+        $('#collapseThree').collapse({'toggle': true});
+        $('#collapseFour').collapse({'toggle': true});
+        $('#collapseOne').collapse({'toggle': true});
+        $('#collapseTwo').collapse({'toggle': true});
+    });
+</script>
