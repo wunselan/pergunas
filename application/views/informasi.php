@@ -210,37 +210,54 @@ img{
 							<!-- End Title -->
 							<div class="row">
 								<div class="col-12">
-										<div class="mu-about-right">
-											<ul>
-												<li style="margin-bottom: 5%;">
-													<h3>Informasi SMP</h3>
-													<br/>
-													<hr class="ad">
+									<div class="mu-about-right">
+										<ul>
+											<div class="row">
+												<div class="col-md-12">
+													<li style="margin-bottom: 5%;">
+														<h3>Informasi SMP</h3>
+														<br/>
+														<hr class="ad">
+														<br/>
 													<ul>
+														<?php
+															foreach($beritasmp as $b){
+																if($b["kategori_berita"]=="SMP"){
+														?>
+
 														<li>
-															<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
+															<p><?php echo $b["judul_berita"]?><a href="<?php echo base_url("Welcome/berita/".$b["id_berita"]);?>"> Baca Selengkapnya</a></p>
 														</li>
-														<li>
-															<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
-														</li>
+														<br/>
+														<?php }} ?>
 													</ul>
-												</li>
-												<li>
-													<h3>Informasi SMA</h3>
-													<br/>
-													<hr class="ad">
+													</li>
+													<?php echo $halaman;?>
+												</div>
+												<div class="col-md-12">
+													<li>
+														<h3>Informasi SMA</h3>
+														<br/>
+														<hr class="ad">
+														<br/>
 													<ul>
+														<?php
+															foreach($beritasmp as $b){
+																if($b["kategori_berita"]=="SMA"){
+														?>
+
 														<li>
-															<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
+															<p><?php echo $b["judul_berita"]?><a href="<?php echo base_url("Welcome/berita/".$b["id_berita"]);?>"> Baca Selengkapnya</a></p>
 														</li>
-														<li>
-															<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
-														</li>
+														<br/>
+														<?php }}?>
 													</ul>
-												</li>
-											</ul>
-										</div>
+													</li>
+												</div>
+											</div>
+										</ul>
 									</div>
+								</div>
 							</div>
 						</div>
 					</div>

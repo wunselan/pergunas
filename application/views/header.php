@@ -93,20 +93,20 @@ a.dropdown-item{
 			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			    <ul class="navbar-nav mr-auto mu-navbar-nav">
 			      <li class="nav-item active">
-			        <a href="index.html">Home</a>
+			        <a href="<?php echo base_url("Welcome/") ?>"><i style="font-size:16px;" class="fa fa-home" aria-hidden="true"></i></a>
 			      </li>
-			      <li class="nav-item"><a href="about-us.html">About us</a></li>
-			      <li class="nav-item"><a href="services.html">Services</a></li>
-			      <li class="nav-item"><a href="portfolio.html">Portfolio</a></li>
-            <li class="nav-item dropdown">
+			      <li class="nav-item"><a href="<?php echo base_url("Welcome/sdm") ?>">Sumber Daya Manusia</a></li>
+			      <li class="nav-item"><a href="<?php echo base_url("Welcome/organisasi") ?>">Struktur Organisasi</a></li>
+			      <!-- <li class="nav-item"><a href="portfolio.html">Portfolio</a></li> -->
+            <!-- <li class="nav-item dropdown">
 			        <a class="dropdown-toggle" href="blog.html" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
 			       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 			          <a class="dropdown-item" href="blog.html">Blog Archive</a>
 			          <a class="dropdown-item" href="blog-single.html">Blog Single</a>
 			       </div>
-				    </li>
-            <li class="nav-item"><a href="contact.html">Contact us</a></li>
-		        <li class="nav-item"><a href="404.html">404 Page</a></li>
+				    </li> -->
+            <li class="nav-item"><a href="<?php echo base_url("Welcome/fasilitas") ?>">Fasilitas</a></li>
+		        <li class="nav-item"><a href="<?php echo base_url("Welcome/fbk") ?>">Feedback</a></li>
 			    </ul>
 			  </div>
 			</nav>
@@ -136,8 +136,7 @@ a.dropdown-item{
       <script type="text/javascript" src="/pergunas/application/assets/js/app.js"></script>
 
 
-      <!-- Custom js -->
-    	<script type="text/javascript" src="/pergunas/application/assets/js/custom.js"></script>
+     
 
       <script>
       $(function () {

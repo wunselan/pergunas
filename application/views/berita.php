@@ -97,14 +97,14 @@
                   <img src="/pergunas/application/assets/images/rapat.jpg" alt="" class="img" style="width:800px;">
                   <div class="row">
                     <div class="col-md-12" style="text-align:left;">
-                      <span class="badge badge-secondary"><span class="fa fa-calendar"></span> 20-02-2020</span>
-                      <span class="badge badge-success"><span class="fa fa-clock-o"></span> 20:20</span>
+                      <span class="badge badge-secondary"><span class="fa fa-calendar"></span><?php echo DateTime::createFromFormat('Y-m-d H:i:s', $berita[0]["time_updated"])->format(' d-m-Y'); ?></span>
+                      <span class="badge badge-success"><span class="fa fa-clock-o"></span><?php echo DateTime::createFromFormat('Y-m-d H:i:s', $berita[0]["time_updated"])->format(' H:i'); ?></span>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <div class="mu-title">
-                        <h3 style="margin-bottom:0;">Rapat Ujian Nasional</h3>
+                        <h3 style="margin-bottom:0;"><?php echo $berita[0]["judul_berita"]?></h3>
                         <hr class="ad">
                       </div>
                     </div>
@@ -112,12 +112,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="isi" style="text-align:left;">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,</p>
+                        <p style="overflow-wrap: break-word;"><?php echo $berita[0]["isi_berita"]?></p>
                       </div>
                     </div>
                   </div>
@@ -125,46 +120,26 @@
                 <div class="col-md-4">
                   <div class="mu-blog-sidebar">
                     <div class="mu-sidebar-widget">
-											<h2 class="mu-sidebar-widget-title">Popular post</h2>
+											<h2 class="mu-sidebar-widget-title">Informasi Terbaru</h2>
 											<div class="mu-popular-content-widget">
+                        <?php
+                          foreach($terbaru as $t){
+                        ?>
                         <div class="media">
 												  <a href="#" class="mu-popular-post-img"><img src="/pergunas/application/assets/images/blog-img-2.jpg" alt="image"></a>
 												  <div class="media-body" style="text-align:left;">
                             <div class="row">
                               <div class="col-md-12">
-                                <span class="badge badge-secondary"><span class="fa fa-calendar"></span> 20-02-2020</span>
-                                <span class="badge badge-success"><span class="fa fa-clock-o"></span> 20:20</span>
+                                <span class="badge badge-secondary"><span class="fa fa-calendar"></span><?php echo DateTime::createFromFormat('Y-m-d H:i:s', $t["time_updated"])->format(' d-m-Y'); ?></span>
+                                <span class="badge badge-success"><span class="fa fa-clock-o"></span><?php echo DateTime::createFromFormat('Y-m-d H:i:s', $t["time_updated"])->format(' H:i'); ?></span>
                               </div>
                             </div>
-													<h3><a href="#">Donec placerat lorem ut destanse sollicitudin tincidunt.</a></h3>
+                            <small style="font-size:10px;"><?php echo $t['kategori_berita']?></small>
+													<h3><a href="<?php echo base_url("Welcome/berita/".$t['id_berita'])?>"><?php echo $t['judul_berita']?></a></h3>
 												  </div>
 												</div>
-
-												<div class="media">
-												  <a href="#" class="mu-popular-post-img"><img src="/pergunas/application/assets/images/blog-img-2.jpg" alt="image"></a>
-												  <div class="media-body" style="text-align:left;">
-                            <div class="row">
-                              <div class="col-md-12">
-                                <span class="badge badge-secondary"><span class="fa fa-calendar"></span> 20-02-2020</span>
-                                <span class="badge badge-success"><span class="fa fa-clock-o"></span> 20:20</span>
-                              </div>
-                            </div>
-													<h3><a href="#">Donec placerat lorem ut destanse sollicitudin tincidunt.</a></h3>
-												  </div>
-												</div>
-
-                        <div class="media">
-												  <a href="#" class="mu-popular-post-img"><img src="/pergunas/application/assets/images/blog-img-2.jpg" alt="image"></a>
-												  <div class="media-body" style="text-align:left;">
-                            <div class="row">
-                              <div class="col-md-12">
-                                <span class="badge badge-secondary"><span class="fa fa-calendar"></span> 20-02-2020</span>
-                                <span class="badge badge-success"><span class="fa fa-clock-o"></span> 20:20</span>
-                              </div>
-                            </div>
-													<h3><a href="#">Donec placerat lorem ut destanse sollicitudin tincidunt.</a></h3>
-												  </div>
-												</div>
+                        <?php  } ?>
+                    
 											</div>
 
 										</div>
