@@ -55,10 +55,10 @@
                 } 
             } 
              
-            if(array_key_exists("returnType",$params) && $params['returnType'] == 'count'){ 
+            if(array_key_exists("returnType2",$params) && $params['returnType2'] == 'count2'){ 
                 $result = $this->db->count_all_results(); 
             }else{ 
-                if(array_key_exists("id_berita", $params) || (array_key_exists("returnType", $params) && $params['returnType'] == 'single')){ 
+                if(array_key_exists("id_berita", $params) || (array_key_exists("returnType2", $params) && $params['returnType2'] == 'single')){ 
                     if(!empty($params['id_berita'])){ 
                         $this->db->where('id_berita', $params['id_berita']); 
                     } 
