@@ -21,44 +21,73 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
+		$this->load->library('ajax_pagination');
 		$this->load->library('pagination');
 		$this->load->library('form_validation');
 		$this->load->model('Welcome_model');
+		$this->perPage=5;
 	}
-	public function index()
-	{
-		// $jumlah_berita=$this->Welcome_model->getBeritaSMP()->num_rows();
-		// $config['base_url'	]= base_url(). '/Welcome/index';
-		// $config['total_rows']=$jumlah_berita;
-		// $config['per_page']=2;
-		// $config['uri_segment'] = 4;
-
-		// $config['full_tag_open']="<ul class='pagination float-right'>";
-		// $config['full_tag_close']="</ul>";
-		// $config['num_tag_open']="<li class='page-item'>";
-		// $config['num_tag_close']="</li>";
-		// $config['cur_tag_open']="<li class='disabled'><li class='page-item active'><a class='page-link' href='#'>";
-		// $config['cur_tag_close']="<span class='sr-only'></span></a></li></li>";
-		// $config['next_tag_open']="<li class='page-item'>";
-		// $config['next_tag_close']="</li>";
-		// $config['prev_tag_open']="<li class='page-item'>";
-		// $config['prev_tag_close']="</li>";
-		// $config['first_tag_open']="<li class='page-item'>";
-		// $config['first_tag_close']="</li>";
-		// $config['last_tag_open']="<li class='page-item'>";
-		// $config['last_tag_close']="</li>";
-		// $config['attributes'] =array('class' => 'page-link');
-		// $this->pagination->initialize($config);
-
+	public function index(){ 
+        $data = array(); 
+		 
+        // Get record count 
+        $conditions['returnType'] = 'count'; 
+		$totalRec = $this->Welcome_model->getRows($conditions); 
 		
-		// $data['halaman']=$this->pagination->create_links();
-		// $data['start']=$start;
-		// $data['beritasmp']=$this->Welcome_model->getBeritaSMP($config['per_page'], $start)->result_array();
-
+        
+        // Pagination configuration 
+        $config['target']      = '#dataList'; 
+        $config['base_url']    = base_url('Welcome/ajaxPaginationData'); 
+        $config['total_rows']  = $totalRec; 
+        $config['per_page']    = $this->perPage; 
+         
+        // Initialize pagination library 
+        $this->ajax_pagination->initialize($config); 
+         
+        // Get records 
+        $conditions = array( 
+            'limit' => $this->perPage 
+        ); 
+        $data['posts'] = $this->Welcome_model->getRows($conditions); 
+         
+		// Load the list page view 
 		$this->load->view('header');
-		$this->load->view('informasi');
+		$this->load->view('informasi', $data);
 		$this->load->view('footer');
+    } 
+     
+    function ajaxPaginationData(){ 
+        // Define offset 
+        $page = $this->input->post('page'); 
+        if(!$page){ 
+            $offset = 0; 
+        }else{ 
+            $offset = $page; 
+        } 
+         
+        // Get record count 
+        $conditions['returnType'] = 'count'; 
+        $totalRec = $this->Welcome_model->getRows($conditions); 
+         
+        // Pagination configuration 
+        $config['target']      = '#dataList'; 
+        $config['base_url']    = base_url('Welcome/ajaxPaginationData'); 
+        $config['total_rows']  = $totalRec; 
+        $config['per_page']    = $this->perPage; 
+         
+        // Initialize pagination library 
+        $this->ajax_pagination->initialize($config); 
+         
+        // Get records 
+        $conditions = array( 
+            'start' => $offset, 
+            'limit' => $this->perPage 
+        ); 
+        $data['posts'] = $this->Welcome_model->getRows($conditions); 
+         
+		$this->load->view('ajax-data', $data, false);
 	}
+	
 	public function sdm(){
 		$this->load->view('header');
 		$this->load->view('daftarguru');
@@ -85,5 +114,8 @@ class Welcome extends CI_Controller {
 		$this->load->view('fasilitas');
 		$this->load->view('footer');
 	}
-	
+	public function getData(){
+		$data=$this->Welcome_model->getBerita();
+		echo json_encode($data);
+	}
 }

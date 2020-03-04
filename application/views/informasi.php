@@ -219,20 +219,24 @@ img{
 														<br/>
 														<hr class="ad">
 														<br/>
-													<ul>
-														<?php
-															foreach($beritasmp as $b){
-																if($b["kategori_berita"]=="SMP"){
-														?>
+														<ul>
 
-														<li>
-															<p><?php echo $b["judul_berita"]?><a href="<?php echo base_url("Welcome/berita/".$b["id_berita"]);?>"> Baca Selengkapnya</a></p>
-														</li>
-														<br/>
-														<?php }} ?>
-													</ul>
+															<li>
+															<div class="post-list" id="dataList">
+																<!-- Display posts list -->
+																<?php if(!empty($posts)){ foreach($posts as $row){ ?>
+																	<p><?php echo $row["judul_berita"]; ?><a href="<?php echo base_url("Welcome/berita/".$row["id_berita"]); ?>"> Baca Selengkapnya</a></p>
+																<?php } }else{ ?>
+																	<p>Tidak Ada Informasi</p>
+																<?php } ?>
+																
+																<!-- Render pagination links -->
+																<?php echo $this->ajax_pagination->create_links(); ?>
+															</div>
+															</li>
+															<br/>
+														</ul>
 													</li>
-													<?php echo $halaman;?>
 												</div>
 												<div class="col-md-12">
 													<li>
@@ -240,18 +244,13 @@ img{
 														<br/>
 														<hr class="ad">
 														<br/>
-													<ul>
-														<?php
-															foreach($beritasmp as $b){
-																if($b["kategori_berita"]=="SMA"){
-														?>
+														<ul>
 
-														<li>
-															<p><?php echo $b["judul_berita"]?><a href="<?php echo base_url("Welcome/berita/".$b["id_berita"]);?>"> Baca Selengkapnya</a></p>
-														</li>
-														<br/>
-														<?php }}?>
-													</ul>
+															<li>
+																<p>vfvfvfvfvf<a href=""> Baca Selengkapnya</a></p>
+															</li>
+															<br/>
+														</ul>
 													</li>
 												</div>
 											</div>
@@ -338,9 +337,10 @@ img{
 			</div>
 		</section>
 	</main>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<!-- End Header -->
   <!-- JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
