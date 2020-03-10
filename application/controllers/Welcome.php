@@ -27,6 +27,7 @@ class Welcome extends CI_Controller {
 		$this->load->model('Welcome_model');
 		$this->perPage=2;
 	}
+
 	public function index(){ 
 		$data = array(); 
 		 
@@ -139,10 +140,73 @@ class Welcome extends CI_Controller {
 	}
 	
 	public function sdm(){
+		$data = array(); 
+		 
+        // Get record count 
+        $conditions['returnType'] = 'count'; 
+		$totalRec = $this->Welcome_model->getDataSDM($conditions);
+
+		// Pagination configuration 
+		$config['target']      = '#datalist'; 
+		$config['base_url']    = base_url('Welcome/paginationSDM'); 
+		$config['total_rows']  = $totalRec; 
+		$config['per_page']    = '4'; 
+		
+		$this->ajax_pagination->initialize($config); 
+		 
+        // Get records 
+        $conditions = array( 
+            'limit' => '4'
+		);
+		
+		$data['sdm'] = $this->Welcome_model->getDataSDM($conditions);
+
 		$this->load->view('header');
-		$this->load->view('daftarguru');
+		$this->load->view('daftarguru', $data);
 		$this->load->view('footer');
 	}
+
+	public function paginationSDM(){
+		// Define offset 
+        $page = $this->input->post('page'); 
+        if(!$page){ 
+            $offset = 0; 
+        }else{ 
+            $offset = $page; 
+        } 
+         
+        // Get record count 
+        $conditions['returnType'] = 'count'; 
+		$totalRec = $this->Welcome_model->getDataSDM($conditions); 
+		
+         
+        // Pagination configuration 
+        $config['target']      = '#datalist'; 
+        $config['base_url']    = base_url('Welcome/paginationSDM'); 
+        $config['total_rows']  = $totalRec; 
+        $config['per_page']    = '4'; 
+         
+        // Initialize pagination library 
+        $this->ajax_pagination->initialize($config); 
+         
+        // Get records 
+        $conditions = array( 
+            'start' => $offset, 
+            'limit' => '4'
+        ); 
+        $data['sdm'] = $this->Welcome_model->getDataSDM($conditions); 
+         
+		$this->load->view('paginationSDM', $data, false);
+	}
+
+	public function search(){
+		$post = $this->input->post();
+		$data['search'] = $this->Welcome_model->search($post['cari'])->result_array();
+		$this->load->view('header');
+		$this->load->view('searchguru',$data);
+		$this->load->view('footer');
+	}
+
 	public function fbk(){
 		$this->load->view('header');
 		$this->load->view('feedback');
@@ -160,10 +224,12 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
 	}
 	public function fasilitas(){
+		$data['fasilitas'] = $this->Welcome_model->fasilitasMedia()->result_array();
 		$this->load->view('header');
-		$this->load->view('fasilitas');
+		$this->load->view('fasilitas', $data);
 		$this->load->view('footer');
 	}
+
 	public function getData(){
 		$data=$this->Welcome_model->getBerita();
 		echo json_encode($data);

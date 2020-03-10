@@ -30,7 +30,7 @@
   .mu-search-form .mu-search-submit-btn input:focus{
     color:#3bb570 !important;
   }
-  h1, h2, h3, p, {
+  h1, h2, h3, p {
 
       -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
          -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -126,10 +126,10 @@
 								<div class="col-md-12">
                   <div class="mu-sidebar-widget">
                     <form class="mu-search-form" action="<?php echo base_url('Welcome/search');?>" method="post">
-    									<input type="search" placeholder="Search" name="cari">
-    									<button class="mu-search-submit-btn" type="submit"><i class="fa fa-search"></i></button>
-    								</form>
-    							</div>
+                        <input type="search" placeholder="Search" name="cari">
+                        <button class="mu-search-submit-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
                 </div>
               </div>
               <div id="datalist">
@@ -139,7 +139,7 @@
                       <div class="row">
                         <!-- start single item -->
                         
-                        <?php if(!empty($sdm)){ foreach($sdm as $row){ ?>
+                        <?php if(!empty($search)){ foreach($search as $row){ ?>
                         <div class="col-md-6">
                           <div class="mu-single-team">
                             <div class="" id="dataList">
@@ -163,13 +163,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="text-center">
-                      <?php echo $this->ajax_pagination->create_links(); ?>   
-                    </div>
-                  </div>
-                </div>
+                
               </div>
 							
 							<!-- End Team Content -->

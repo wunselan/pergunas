@@ -81,12 +81,6 @@
             return $result; 
         } 
         
-        public function getBerita()
-        {
-            $data=$this->db->get('berita');
-            return $data->result_array();
-        }
-
         public function getBeritaById($id_berita)
         {
             $this->db->select('*');
@@ -104,21 +98,59 @@
             return $this->db->get();
         }
 
-        public function getBeritaSMP($limit=null, $start=null)
-        {
+        function getDataSDM($params = array()){ 
+            $this->db->select('*'); 
+            $this->db->from('guru'); 
+            $this->db->order_by('jabatan_guru', 'asc');
+             
+            if(array_key_exists("where", $params)){ 
+                foreach($params['where'] as $key => $val){ 
+                    $this->db->where($key, $val); 
+                } 
+            } 
+             
+            if(array_key_exists("returnType",$params) && $params['returnType'] == 'count'){ 
+                $result = $this->db->count_all_results(); 
+            }else{ 
+                if(array_key_exists("id_guru", $params) || (array_key_exists("returnType", $params) && $params['returnType'] == 'single')){ 
+                    if(!empty($params['id_guru'])){ 
+                        $this->db->where('id_guru', $params['id_guru']); 
+                    } 
+                    $query = $this->db->get();
+                    $result = $query->row_array(); 
+                }else{ 
+                    $this->db->order_by('id_guru', 'desc'); 
+                    if(array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
+                        $this->db->limit($params['limit'],$params['start']); 
+                    }elseif(!array_key_exists("start",$params) && array_key_exists("limit",$params)){ 
+                        $this->db->limit($params['limit']); 
+                    } 
+                     
+                    $query = $this->db->get(); 
+                    $result = ($query->num_rows() > 0)?$query->result_array():FALSE; 
+                } 
+            } 
+             
+            // Return fetched data 
+            return $result; 
+        } 
+        
+        public function search($data){
+            $query = "SELECT * FROM `guru`
+            WHERE `nama_guru`  LIKE '%$data%' ORDER BY `jabatan_guru` asc
+            ";
+        
+            return $this->db->query($query);
+        
+            // return $this->db->get();
+        }
+
+        public function fasilitasMedia(){
             $this->db->select('*');
-            $this->db->from('berita');
-            $this->db->where(array('kategori_berita'=>'SMP'));
-            $this->db->limit($limit, $start);
+            $this->db->from('fasilitas');
             return $this->db->get();
         }
-        public function getBeritaSMA($limit=null, $start=null)
-        {
-            $this->db->select('*');
-            $this->db->from('berita');
-            $this->db->where(array('kategori_berita'=>'SMA'));
-            $this->db->limit($limit, $start);
-            return $this->db->get();
-        }
+
+        
     }
 ?>
