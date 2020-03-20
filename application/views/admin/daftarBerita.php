@@ -54,7 +54,7 @@
       </li>
       <hr class="sidebar-divider">
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('resep/listresep')?> ">
+        <a class="nav-link" href="<?php echo base_url('Admin/daftarFasilitas')?> ">
         <i class="fa fa-building"></i>
           <span>Daftar Fasilitas</span></a>
       </li>
@@ -84,7 +84,7 @@
         <div class="accordion" id="accordionExample">
           <div class="card" style="margin-bottom:10px; border:1px solid #e3e6f0; border-radius:5px">
             <div class="card-header">
-              <a class="btn btn-link" style="padding:0;" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><h6 style="color:#878787;"class="m-0 font-weight-bold ">Tambah Berita<small><i> (klik untuk membuka formulir)</i></small></h6></a>
+              <a class="btn btn-link" style="padding:0;" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><h6 style="color:#878787;"class="m-0 font-weight-bold ">Tambah Fasilitas<small><i> (klik untuk membuka formulir)</i></small></h6></a>
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
@@ -153,7 +153,7 @@
                       <td><?php echo $row->kategori_berita ?></td>
                       <td><?php echo $row->judul_berita ?></td>
                       <td><?php echo word_limiter($row->isi_berita,64) ?></td>
-                      <td><?php echo $row->foto_berita ?></td>
+                      <td><img src="/pergunas/application/assets/images/berita/<?php echo $row->foto_berita ?>" style="width:125px;" alt="image"></td>
                       <td><?php echo DateTime::createFromFormat('Y-m-d H:i:s', $row->time_add)->format('d-m-Y H:i:s')?></td>
                       <td><?php echo DateTime::createFromFormat('Y-m-d H:i:s', $row->time_updated)->format('d-m-Y H:i:s') ?></td>
                       <td>
@@ -170,7 +170,7 @@
         </div>
       </div>
       <div class="">
-        <form class="form" method="post" id="form" action="" enctype="multipart/form-data">
+        <form class="form1" method="post" id="form1" action="" enctype="multipart/form-data">
           <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -287,7 +287,7 @@ $("#dataTable").on("click", ".edit", function(e) {
     $('#judul_berita').val($(this).data('judul'));
     $('#isi_berita').val($(this).data('isi'));
     $('#foto_berita').val($(this).data('foto'));
-    $('#form').attr("action", url + $(this).data('id'));
+    $('#form1').attr("action", url + $(this).data('id'));
 });
 // $(document).ready(function () {
 //     $('#email').on({

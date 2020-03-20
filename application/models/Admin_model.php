@@ -13,8 +13,18 @@
             return $this->db->get();
         }
 
+        public function daftarFasilitas(){
+            $this->db->select('*');
+            $this->db->from('fasilitas');
+            return $this->db->get();
+        }
+
         public function deleteBerita($id_berita){
             return $this->db->delete('berita', array('id_berita'=>$id_berita));
+        }
+
+        public function deleteFasilitas($id_fasilitas){
+            return $this->db->delete('fasilitas', array('id_fasilitas'=>$id_fasilitas));
         }
 
         public function updateBerita($input, $id_berita){
@@ -22,8 +32,17 @@
             $this->db->update('berita', $input);
         }
 
+        public function updateFasilitas($input, $id_fasilitas){
+            $this->db->where(array('id_fasilitas'=>$id_fasilitas));
+            $this->db->update('fasilitas', $input);
+        }
+
         public function tambahBerita($data){
             return $this->db->insert('berita', $data);
+        }
+
+        public function tambahFasilitas($data){
+            return $this->db->insert('fasilitas', $data);
         }
 
     }
