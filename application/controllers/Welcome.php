@@ -214,6 +214,7 @@ class Welcome extends CI_Controller {
 	public function berita($id_berita){
 		$data['berita']=$this->Welcome_model->getBeritaById($id_berita)->result_array();
 		$data['terbaru']=$this->Welcome_model->getBeritaTerbaru()->result_array();
+		
 		$this->load->view('header');
 		$this->load->view('berita',$data);
 		$this->load->view('footer');

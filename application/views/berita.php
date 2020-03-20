@@ -1,6 +1,7 @@
 <style media="screen">
   .img{
-    max-width: 100%;
+    width: 100%;
+    height: auto;
   }
   .a{
     padding: 1%;
@@ -94,7 +95,7 @@
             <div class="mu-blog-area">
               <div class="row">
                 <div class="col-md-8 a">
-                  <img src="/pergunas/application/assets/images/rapat.jpg" alt="" class="img" style="width:800px;">
+                  <img src="/pergunas/application/assets/images/Berita/<?=$berita[0]["foto_berita"]?>" alt="" class="img" style="width:800px;">
                   <div class="row">
                     <div class="col-md-12" style="text-align:left;">
                       <span class="badge badge-secondary"><span class="fa fa-calendar"></span><?php echo DateTime::createFromFormat('Y-m-d H:i:s', $berita[0]["time_updated"])->format(' d-m-Y'); ?></span>
@@ -124,9 +125,12 @@
 											<div class="mu-popular-content-widget">
                         <?php
                           foreach($terbaru as $t){
+                            if($t["foto_berita"]== null){
+                              $t["foto_berita"] = "blog-img-1.jpg";
+                            }
                         ?>
                         <div class="media">
-												  <a href="#" class="mu-popular-post-img"><img src="/pergunas/application/assets/images/blog-img-2.jpg" alt="image"></a>
+												  <a href="#" class="mu-popular-post-img"><img src="/pergunas/application/assets/images/berita/<?=$t["foto_berita"]?>" style="width:125px;" alt="image"></a>
 												  <div class="media-body" style="text-align:left;">
                             <div class="row">
                               <div class="col-md-12">
