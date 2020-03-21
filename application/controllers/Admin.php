@@ -135,5 +135,62 @@ class Admin extends CI_Controller {
 			redirect('/admin/daftarFasilitas');
 		}
 
+		public function daftarGuru(){
+			$data['guru'] = $this->Admin_model->daftarGuru()->result();
+			$this->load->view('admin/daftarGuru', $data);
+		}
+
+		public function deleteGuru($id_guru){
+      $this->Admin_model->deleteGuru($id_guru);
+      redirect('Admin/daftarGuru', 'location');
+    }
+
+		public function updateGuru($id_guru){
+			if ($_FILES["foto_guru"]["size"] !==0 ) {
+				$ext = pathinfo($_FILES["foto_guru"]["name"], PATHINFO_EXTENSION);
+				$date = date("dmYhis");
+				$foto_guru = "guru_$date.$ext";
+				$config['upload_path'] = './application/assets/images/guru';
+				$config['allowed_types'] = 'jpg|png|jpeg';
+				// $config['max_size']     = '3500';
+				$config['file_name'] = $foto_guru;
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+				$upload = $this->upload->do_upload('foto_guru');
+				$input->foto_guru = $foto_guru;
+			}
+
+	    $post = $this->input->post();
+	    $input->nama_guru = $post['nama_guru'];
+	    $input->jabatan_guru = $post['jabatan_guru'];
+	    $input->mapel_guru = $post['mapel_guru'];
+	    $input->nohp_guru = $post['nohp_guru'];
+	    $input->email_guru = $post['email_guru'];
+	    $query = $this->Admin_model->updateGuru($input, $id_guru);
+	    redirect('Admin/daftarGuru', 'location');
+		}
+
+		public function tambahGuru(){
+			$ext = pathinfo($_FILES["foto_guru1"]["name"], PATHINFO_EXTENSION);
+			$date = date("dmYhis");
+			$foto_guru1 = "guru_$date.$ext";
+			$config['upload_path'] = './application/assets/images/guru';
+			$config['allowed_types'] = 'jpg|png|jpeg';
+			$config['file_name'] = $foto_guru1;
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			$upload = $this->upload->do_upload('foto_guru1');
+
+			$post = $this->input->post();
+			$input->nama_guru = $post['nama_guru1'];
+	    $input->jabatan_guru = $post['jabatan_guru1'];
+	    $input->mapel_guru = $post['mapel_guru1'];
+	    $input->nohp_guru = $post['nohp_guru1'];
+	    $input->email_guru = $post['email_guru1'];
+			$input->foto_guru = $foto_guru1;
+			$query = $this->Admin_model->tambahGuru($input);
+			redirect('/admin/daftarGuru');
+		}
+
 }
 ?>

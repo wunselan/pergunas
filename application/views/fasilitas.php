@@ -50,7 +50,7 @@
                                 <div class="filtr-container">
                                     <?php if(!empty($fasilitas)){ foreach($fasilitas as $row){ ?>
                                     <div class="col-xs-6 col-sm-6 col-md-4 filtr-item" data-category="<?php echo $row['kategori_fasilitas'];?>">
-                                        <a href="#" class="thumbnail img-responsive" id="caption" data-toggle="modal" data-caption="<?php echo $row['ruangan_fasilitas'];?>" data-image="/pergunas/application/assets/images/portfolio/<?=$row["foto_fasilitas"]?>" data-target="#trslphotos"><img src="/pergunas/application/assets/images/portfolio/img-1.jpg" alt="recent photo">
+                                        <a href="#" class="thumbnail img-responsive" id="caption" data-toggle="modal" data-caption="<?php echo $row['ruangan_fasilitas'];?>" data-image="/pergunas/application/assets/images/fasilitas/<?=$row["foto_fasilitas"]?>" data-target="#trslphotos"><img src="/pergunas/application/assets/images/fasilitas/<?=$row["foto_fasilitas"]?>" alt="recent photo">
                                             <div class="mu-filter-item-content">
                                                 <h4 class="mu-filter-item-title"><?php echo $row['ruangan_fasilitas'];?></h4>
                                             </div>

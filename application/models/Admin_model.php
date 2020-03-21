@@ -45,6 +45,25 @@
             return $this->db->insert('fasilitas', $data);
         }
 
+        public function daftarGuru(){
+          $this->db->select('*');
+          $this->db->from('guru');
+          return $this->db->get();
+        }
+
+        public function deleteGuru($id_guru){
+          return $this->db->delete('guru', array('id_guru'=>$id_guru));
+        }
+
+        public function updateGuru($input, $id_guru){
+            $this->db->where(array('id_guru'=>$id_guru));
+            $this->db->update('guru', $input);
+        }
+
+        public function tambahGuru($data){
+            return $this->db->insert('guru', $data);
+        }
+
     }
 
 ?>

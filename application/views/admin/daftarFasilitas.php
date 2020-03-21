@@ -105,16 +105,16 @@
                       </select>
                     </div>
                   </div>
-                  <label for="">Foto Fasilitas <small><i>(foto boleh kosong)</i></small></label>
+                  <label for="">Foto Fasilitas</label>
                   <div class="form-row">
                     <div class="custom-file col-md-6" >
                       <div class="form-group">
-                        <input type="file" class="custom-file-input" id="customFile" name="foto_fasilitas1" >
+                        <input type="file" class="custom-file-input" id="customFile" name="foto_fasilitas1" required>
                         <label class="custom-file-label" for="customFile">Choose file</label>
                       </div>
                     </div>
                     <div class="col-md-6" style="text-align:right;">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
                   </div>
                 </form>
