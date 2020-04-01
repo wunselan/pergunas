@@ -59,6 +59,12 @@
           <span>Daftar Fasilitas</span></a>
       </li>
       <hr class="sidebar-divider d-none d-md-block">
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('admin/daftarGuru')?> ">
+        <i class="fa fa-users"></i>
+        <span>Daftar Guru</span></a>
+      </li>
+      <hr class="sidebar-divider d-none d-md-block">
     </ul>
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">

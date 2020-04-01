@@ -25,140 +25,140 @@ class Welcome extends CI_Controller {
 		$this->load->library('ajax_pagination2');
 		$this->load->library('form_validation');
 		$this->load->model('Welcome_model');
-		$this->perPage=2;
+		$this->perPage=5;
 	}
 
-	public function index(){ 
-		$data = array(); 
-		 
-        // Get record count 
-        $conditions['returnType'] = 'count'; 
+	public function index(){
+		$data = array();
+
+        // Get record count
+        $conditions['returnType'] = 'count';
 		$totalRec = $this->Welcome_model->getRows($conditions);
-		$conditions2['returnType2'] = 'count2'; 
-		$totalRec2 = $this->Welcome_model->getRowsSMA($conditions2);  
+		$conditions2['returnType2'] = 'count2';
+		$totalRec2 = $this->Welcome_model->getRowsSMA($conditions2);
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// Pagination configuration 
-		$config['target']      = '#dataList'; 
-		$config['base_url']    = base_url('Welcome/ajaxPaginationData'); 
-		$config['total_rows']  = $totalRec; 
-		$config['per_page']    = $this->perPage; 
-		
-		$this->ajax_pagination->initialize($config); 
-		 
-        // Get records 
-        $conditions = array( 
-            'limit' => $this->perPage 
+		// Pagination configuration
+		$config['target']      = '#dataList';
+		$config['base_url']    = base_url('Welcome/ajaxPaginationData');
+		$config['total_rows']  = $totalRec;
+		$config['per_page']    = $this->perPage;
+
+		$this->ajax_pagination->initialize($config);
+
+        // Get records
+        $conditions = array(
+            'limit' => $this->perPage
 		);
-		
+
 		$data['posts'] = $this->Welcome_model->getRows($conditions);
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////
-		$config2['target']      = '#dataList2'; 
-        $config2['base_url']    = base_url('Welcome/ajaxPaginationData2'); 
-        $config2['total_rows']  = $totalRec2; 
-        $config2['per_page']    = $this->perPage; 
-         
-        // Initialize pagination library 
-		$this->ajax_pagination2->initialize2($config2); 
-		
-		$conditions2 = array( 
-            'limit' => $this->perPage 
-		); 
-		
-		$data['posts2'] = $this->Welcome_model->getRowsSMA($conditions2); 
+		$config2['target']      = '#dataList2';
+        $config2['base_url']    = base_url('Welcome/ajaxPaginationData2');
+        $config2['total_rows']  = $totalRec2;
+        $config2['per_page']    = $this->perPage;
+
+        // Initialize pagination library
+		$this->ajax_pagination2->initialize2($config2);
+
+		$conditions2 = array(
+            'limit' => $this->perPage
+		);
+
+		$data['posts2'] = $this->Welcome_model->getRowsSMA($conditions2);
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		// Load the list page view 
+
+		// Load the list page view
 		$this->load->view('header');
 		$this->load->view('informasi', $data);
 		$this->load->view('footer');
-    } 
-     
-    function ajaxPaginationData(){ 
-        // Define offset 
-        $page = $this->input->post('page'); 
-        if(!$page){ 
-            $offset = 0; 
-        }else{ 
-            $offset = $page; 
-        } 
-         
-        // Get record count 
-        $conditions['returnType'] = 'count'; 
-		$totalRec = $this->Welcome_model->getRows($conditions); 
-		
-         
-        // Pagination configuration 
-        $config['target']      = '#dataList'; 
-        $config['base_url']    = base_url('Welcome/ajaxPaginationData'); 
-        $config['total_rows']  = $totalRec; 
-        $config['per_page']    = $this->perPage; 
-         
-        // Initialize pagination library 
-        $this->ajax_pagination->initialize($config); 
-         
-        // Get records 
-        $conditions = array( 
-            'start' => $offset, 
-            'limit' => $this->perPage 
-        ); 
-        $data['posts'] = $this->Welcome_model->getRows($conditions); 
-         
+    }
+
+    function ajaxPaginationData(){
+        // Define offset
+        $page = $this->input->post('page');
+        if(!$page){
+            $offset = 0;
+        }else{
+            $offset = $page;
+        }
+
+        // Get record count
+        $conditions['returnType'] = 'count';
+		$totalRec = $this->Welcome_model->getRows($conditions);
+
+
+        // Pagination configuration
+        $config['target']      = '#dataList';
+        $config['base_url']    = base_url('Welcome/ajaxPaginationData');
+        $config['total_rows']  = $totalRec;
+        $config['per_page']    = $this->perPage;
+
+        // Initialize pagination library
+        $this->ajax_pagination->initialize($config);
+
+        // Get records
+        $conditions = array(
+            'start' => $offset,
+            'limit' => $this->perPage
+        );
+        $data['posts'] = $this->Welcome_model->getRows($conditions);
+
 		$this->load->view('informasiSMP', $data, false);
 	}
 
-	function ajaxPaginationData2(){ 
-        // Define offset 
-        $page2 = $this->input->post('page'); 
-        if(!$page2){ 
-            $offset2 = 0; 
-        }else{ 
-            $offset2 = $page2; 
-        } 
-         
-        // Get record count 
-        $conditions2['returnType2'] = 'count2'; 
-        $totalRec2 = $this->Welcome_model->getRowsSMA($conditions2); 
-         
-        // Pagination configuration 
-        $config2['target']      = '#dataList2'; 
-        $config2['base_url']    = base_url('Welcome/ajaxPaginationData2'); 
-        $config2['total_rows']  = $totalRec2; 
-        $config2['per_page']    = $this->perPage; 
-         
-        // Initialize pagination library 
-        $this->ajax_pagination2->initialize2($config2); 
-         
-        // Get records 
-        $conditions2 = array( 
-            'start' => $offset2, 
-            'limit' => $this->perPage 
-        ); 
-        $data['posts2'] = $this->Welcome_model->getRowsSMA($conditions2); 
-         
+	function ajaxPaginationData2(){
+        // Define offset
+        $page2 = $this->input->post('page');
+        if(!$page2){
+            $offset2 = 0;
+        }else{
+            $offset2 = $page2;
+        }
+
+        // Get record count
+        $conditions2['returnType2'] = 'count2';
+        $totalRec2 = $this->Welcome_model->getRowsSMA($conditions2);
+
+        // Pagination configuration
+        $config2['target']      = '#dataList2';
+        $config2['base_url']    = base_url('Welcome/ajaxPaginationData2');
+        $config2['total_rows']  = $totalRec2;
+        $config2['per_page']    = $this->perPage;
+
+        // Initialize pagination library
+        $this->ajax_pagination2->initialize2($config2);
+
+        // Get records
+        $conditions2 = array(
+            'start' => $offset2,
+            'limit' => $this->perPage
+        );
+        $data['posts2'] = $this->Welcome_model->getRowsSMA($conditions2);
+
 		$this->load->view('informasiSMA', $data, false);
 	}
-	
+
 	public function sdm(){
-		$data = array(); 
-		 
-        // Get record count 
-        $conditions['returnType'] = 'count'; 
+		$data = array();
+
+        // Get record count
+        $conditions['returnType'] = 'count';
 		$totalRec = $this->Welcome_model->getDataSDM($conditions);
 
-		// Pagination configuration 
-		$config['target']      = '#datalist'; 
-		$config['base_url']    = base_url('Welcome/paginationSDM'); 
-		$config['total_rows']  = $totalRec; 
-		$config['per_page']    = '4'; 
-		
-		$this->ajax_pagination->initialize($config); 
-		 
-        // Get records 
-        $conditions = array( 
+		// Pagination configuration
+		$config['target']      = '#datalist';
+		$config['base_url']    = base_url('Welcome/paginationSDM');
+		$config['total_rows']  = $totalRec;
+		$config['per_page']    = '4';
+
+		$this->ajax_pagination->initialize($config);
+
+        // Get records
+        $conditions = array(
             'limit' => '4'
 		);
-		
+
 		$data['sdm'] = $this->Welcome_model->getDataSDM($conditions);
 
 		$this->load->view('header');
@@ -167,35 +167,35 @@ class Welcome extends CI_Controller {
 	}
 
 	public function paginationSDM(){
-		// Define offset 
-        $page = $this->input->post('page'); 
-        if(!$page){ 
-            $offset = 0; 
-        }else{ 
-            $offset = $page; 
-        } 
-         
-        // Get record count 
-        $conditions['returnType'] = 'count'; 
-		$totalRec = $this->Welcome_model->getDataSDM($conditions); 
-		
-         
-        // Pagination configuration 
-        $config['target']      = '#datalist'; 
-        $config['base_url']    = base_url('Welcome/paginationSDM'); 
-        $config['total_rows']  = $totalRec; 
-        $config['per_page']    = '4'; 
-         
-        // Initialize pagination library 
-        $this->ajax_pagination->initialize($config); 
-         
-        // Get records 
-        $conditions = array( 
-            'start' => $offset, 
+		// Define offset
+        $page = $this->input->post('page');
+        if(!$page){
+            $offset = 0;
+        }else{
+            $offset = $page;
+        }
+
+        // Get record count
+        $conditions['returnType'] = 'count';
+		$totalRec = $this->Welcome_model->getDataSDM($conditions);
+
+
+        // Pagination configuration
+        $config['target']      = '#datalist';
+        $config['base_url']    = base_url('Welcome/paginationSDM');
+        $config['total_rows']  = $totalRec;
+        $config['per_page']    = '4';
+
+        // Initialize pagination library
+        $this->ajax_pagination->initialize($config);
+
+        // Get records
+        $conditions = array(
+            'start' => $offset,
             'limit' => '4'
-        ); 
-        $data['sdm'] = $this->Welcome_model->getDataSDM($conditions); 
-         
+        );
+        $data['sdm'] = $this->Welcome_model->getDataSDM($conditions);
+
 		$this->load->view('paginationSDM', $data, false);
 	}
 
@@ -214,7 +214,7 @@ class Welcome extends CI_Controller {
 	public function berita($id_berita){
 		$data['berita']=$this->Welcome_model->getBeritaById($id_berita)->result_array();
 		$data['terbaru']=$this->Welcome_model->getBeritaTerbaru()->result_array();
-		
+
 		$this->load->view('header');
 		$this->load->view('berita',$data);
 		$this->load->view('footer');
