@@ -87,6 +87,9 @@
         </nav>
       </div>
       <div class="container">
+        <?php
+          echo $this->session->flashdata('notiftambah');
+        ?>
         <div class="accordion" id="accordionExample">
           <div class="card" style="margin-bottom:10px; border:1px solid #e3e6f0; border-radius:5px">
             <div class="card-header">
@@ -341,7 +344,10 @@ document.addEventListener("DOMContentLoaded", function() {
             e.target.setCustomValidity("");
         };
     }
-})
+});
+setTimeout(function() {
+    $('#notiftambah').fadeOut('fast');
+}, 5000);
 
 </script>
 </body>

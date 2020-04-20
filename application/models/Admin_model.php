@@ -64,6 +64,14 @@
             return $this->db->insert('guru', $data);
         }
 
+        public function beritaById(){
+            $this->db->select('*');
+            $this->db->from('berita');
+            $this->db->order_by('id_berita DESC');
+            $this->db->limit('1');
+            return $this->db->get();
+        }
+
     }
 
 ?>

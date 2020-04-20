@@ -21,10 +21,12 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
+		$this->load->library('session');
 		$this->load->library('ajax_pagination');
 		$this->load->library('ajax_pagination2');
 		$this->load->library('form_validation');
 		$this->load->model('Welcome_model');
+		$this->load->library('email');
 		$this->perPage=5;
 	}
 
@@ -68,6 +70,7 @@ class Welcome extends CI_Controller {
 		$data['posts2'] = $this->Welcome_model->getRowsSMA($conditions2);
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		$data['jmlhguru'] = $this->Welcome_model->jmlhSDM();
 		// Load the list page view
 		$this->load->view('header');
 		$this->load->view('informasi', $data);
@@ -211,6 +214,39 @@ class Welcome extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('feedback');
 	}
+
+	public function sendfbk(){
+		$config = array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465,
+			'smtp_user' => 'lblacklordb@gmail.com',
+			'smtp_pass' => 'lblcklrdb',
+			'mailtype' => 'html',
+			'charset' => 'iso-8859-1'
+		);
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+
+		$post = $this->input->post();
+		$from_email = $post['email'];
+	 	$to_email = "wunselstw@gmail.com";
+
+	   $this->email->from($from_email, $post['nama']);
+	   $this->email->to($to_email);
+	   $this->email->subject('FEEDBACK DARI WEB');
+	   $this->email->message($post['message']);
+
+	   //Send mail
+	   if($this->email->send()){
+			 $this->session->set_flashdata("email_sent","Terima kasih telah memberi feedback.");
+			 redirect('Welcome/fbk');
+		 }else{
+			 $this->session->set_flashdata("email_sent","Maaf feedback belum diterima, ada kesalahan.");
+		   redirect('Welcome/fbk');
+		 }
+	 }
+
 	public function berita($id_berita){
 		$data['berita']=$this->Welcome_model->getBeritaById($id_berita)->result_array();
 		$data['terbaru']=$this->Welcome_model->getBeritaTerbaru()->result_array();

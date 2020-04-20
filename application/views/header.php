@@ -49,7 +49,7 @@ a.dropdown-item{
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SMP & SMA Perguruan Nasional</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/icon" href="/pergunas/application/assets/images/favicon.ico"/>
+    <link rel="shortcut icon" type="image/icon" href="/pergunas/application/assets/images/pergunasicon2.ico"/>
     <!-- Font Awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
      <!-- Bootstrap CSS -->
@@ -136,7 +136,7 @@ a.dropdown-item{
       <script type="text/javascript" src="/pergunas/application/assets/js/app.js"></script>
 
 
-     
+
 
       <script>
       $(function () {

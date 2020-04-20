@@ -87,6 +87,9 @@
         </nav>
       </div>
       <div class="container">
+        <?php
+          echo $this->session->flashdata('email_sent');
+        ?>
         <div class="accordion" id="accordionExample">
           <div class="card" style="margin-bottom:10px; border:1px solid #e3e6f0; border-radius:5px">
             <div class="card-header">
@@ -347,7 +350,10 @@ document.addEventListener("DOMContentLoaded", function() {
             e.target.setCustomValidity("");
         };
     }
-})
+});
+setTimeout(function() {
+    $('#notifemail').fadeOut('fast');
+}, 5000);
 
 </script>
 </body>

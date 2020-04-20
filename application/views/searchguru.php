@@ -157,7 +157,10 @@
                           </div>
                         </div>
                         <?php } }else{ ?>
-                                <p>Tidak Ada Informasi</p>
+                          <div class="col-md-12" style="padding-top:20px">
+
+                                  <h1 style="text-align:center;">Data Tidak Ditemukan</h1>
+                          </div>
                               <?php } ?>
                       </div>
                     </div>
